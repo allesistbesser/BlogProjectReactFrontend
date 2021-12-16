@@ -5,9 +5,51 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 12px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400&display=swap');
+
+.lora {
+  font-family: 'Lora', serif;
+}
+
+.lora_sm{
+  font-family: 'Lora', serif;
+  font-size: 0.7rem;
+}
+.patrick {
+  font-family: 'Patrick Hand', cursive;
+  
+}
+
+.post_img {
+  transition: all .4s ease-in-out;
+ }
+
+.post_img:hover {
+  border-radius: 10px;
+  transform: scale(1.04);
+    
+}
+
+.nunito {
+  font-family: 'Nunito', sans-serif;
+}
+
+.icon {
+  transition: all .4s ease-in-out;
+  
+}
+.icon:hover{
+  filter: brightness(150%);
+  transform: scale(1.34);
+    
+}
+
