@@ -1,0 +1,9 @@
+1. Herokuya deploy ederken node ve npm version hatasi verdi.
+
+"engines": {
+    "node": "14.17.1",
+    "npm": "8.1.1"
+
+  },
+
+yukaridaki version bilgisini package.json a ekleyince düzeldi.
