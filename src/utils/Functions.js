@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 
 const baseurl ='https://blogapi222.herokuapp.com/'
+// const baseurl ='http://127.0.0.1:8000/'
 
 export const useFetch = () => {
     const [category, setcategory] = useState([])
@@ -107,4 +108,7 @@ export const userlogin = async (infologin,setlogininfo,setislogin,setError,histo
 }
 
 
-
+export const postsearch = async (searchitem,setsearchResult) =>{
+  await axios.get(`${baseurl}post/?search=${searchitem}`)
+  .then((res)=> setsearchResult(res.data))
+}

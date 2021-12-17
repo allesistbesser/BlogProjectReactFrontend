@@ -1,20 +1,28 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import { Button, Nav, Form, FormControl, Container, Offcanvas } from 'react-bootstrap';
 import { useHistory } from "react-router";
 import { BlogContext } from "../context/BlogContext"
-import { logout } from '../utils/Functions';
+import { logout , postsearch} from '../utils/Functions';
 
 
 const Header = () => {
+
+ 
+  
+  const { islogin, setislogin, setlogininfo, logininfo } = useContext(BlogContext);
+  const history = useHistory();
+  const [searchitem , setsearchitem] = useState('')
+  const [searchResult , setsearchResult] = useState()
 
   const handlelogout = () => {
     logout()
       .then(() => { setislogin(false); setlogininfo('') })
   }
-  
-  const { islogin, setislogin, setlogininfo, logininfo } = useContext(BlogContext);
-  const history = useHistory();
+  const handleOnchange = (e) => {
+    setsearchitem(e.target.value)
+    if (searchitem === '') {setsearchResult()}
+  }
 
   return (
     <div>
@@ -54,12 +62,25 @@ const Header = () => {
               <Form className="d-flex">
                 <FormControl
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search Blog in Content in Database"
                   className="me-2"
                   aria-label="Search"
+                  value={searchitem} 
+                  onChange={(e)=> handleOnchange(e)}
                 />
-                <Button variant="outline-success">Search</Button>
+                <Button onClick={()=> {postsearch(searchitem,setsearchResult)}} variant="outline-success">Search</Button>
+                
               </Form>
+              {searchResult ? <>  <p className='mt-3 fw-bold'>{searchResult?.length} Blog Found</p>  </> :  null}
+             
+              
+              {searchResult?.map((item)=>(
+                <div key={item.id} className='mt-2 fs-6 text-primary'>
+                 
+                <div > {item.title}</div>
+                </div>
+              ))}
+              
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

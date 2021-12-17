@@ -36,12 +36,12 @@ const Login = () => {
                     <div className="form-text">OR</div>
 
                     <label className="form-label">User Name</label>
-                    <input name='username' value={username} onChange={(e)=> setusername(e.target.value)} type="text" className="form-control" aria-describedby="emailHelp" />
+                    <input name='username' value={username || ''} onChange={(e)=> setusername(e.target.value)} type="text" className="form-control" aria-describedby="emailHelp" />
                    
                 </div>
                 <div className="mb-3">
                     <label  className="form-label">Password</label>
-                    <input name='password'type="password" value={password} onChange={(e)=> setpassword(e.target.value)}  className="form-control"  />
+                    <input name='password'type="password" value={password || ''} onChange={(e)=> setpassword(e.target.value)}  className="form-control"  />
                 </div>
 
                 <button  type="submit" className="btn btn-primary container">SIGN IN</button>
